@@ -219,7 +219,7 @@ body {
 
 
 #info_data {
-    display: block;
+    display: none;
 }
 
 #info_data h3 {
