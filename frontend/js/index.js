@@ -9,7 +9,7 @@ logo.addEventListener("click", async e => {
 
 input_bt.addEventListener("click", async e => {
 
-     e.preventDefault();
+    e.preventDefault();
 
     let alertEl = document.getElementById("alert");
     let loding = document.getElementById("loding");
@@ -85,11 +85,8 @@ input_bt.addEventListener("click", async e => {
             alertEl.style.display = "block"
             input_link_id.style.display = "none"
             input_bt.style.display = "none"
-
-            setTimeout(() => {
-                alertEl.style.display = "none";
-            }, 8000);
-
+            await new Promise(r => setTimeout(r, 6000));
+            alertEl.style.display = "none";
             window.location = "./index.html"
 
         }
@@ -100,11 +97,8 @@ input_bt.addEventListener("click", async e => {
             alertEl.style.display = "block";
             input_link_id.style.display = "none"
             input_bt.style.display = "none"
-
-            setTimeout(() => {
-                alertEl.style.display = "none";
-            }, 8000);
-
+            await new Promise(r => setTimeout(r, 6000));
+            alertEl.style.display = "none";
             window.location = "./index.html"
 
         }
