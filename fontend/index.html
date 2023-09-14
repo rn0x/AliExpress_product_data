@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- content="article" قم بتغييرها للمقالات -->
+    <meta property="og:type" content="website">
+    <!-- عنوان الصفحه -->
+    <meta property="og:title" content="إستخراج بيانات منتجات aliexpress">
+    <!-- إسم الموقع -->
+    <meta property="og:site_name" content="إستخراج بيانات منتجات علي إكسبريس">
+    <!-- كلمات دليلية -->
+    <meta name="keywords" content="علي إكسبريس,
+    aliexpress,
+    aliexpress api,
+    aliexpress jaon,
+    aliexpress github,
+    إستخراج معلومات المنتج,
+    علي إكسبريس,
+    موقع علي إكسبريس aliexpress,
+    علي إكسبريس aliexpress,
+    علي بابا إكسبريس,
+    علي اكسبرس اكسسوارات,
+    علي اكسبرس اكسسوارات الدفع عند الاستلام,
+    علي اكسبرس ارامكس,
+    هواوي علي اكسبريس,
+    موقع علي اكسبريس للتسوق">
+    <!-- صورة المعاينة للصفحة -->
+    <meta property="og:image" content="./image/preview.png" />
+    <!-- وصف الصفحة -->
+    <meta property="og:description" content="برمجية استخراج معلومات المنتج من موقع علي إكسبريس  مثل اسم المنتج وسعره وصور للمنتج للدروب شوبنق" />
+    <!-- وصف الصفحة -->
+    <meta name="description" content="برمجية استخراج معلومات المنتج من موقع علي إكسبريس  مثل اسم المنتج وسعره وصور للمنتج للدروب شوبنق" />
+    <!-- إسم الصفحة -->
+    <title>استخراج بيانات المنتج من موقع علي إكسبريس</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+    <!-- ================ HEADER =============== -->
+
+    <header id="header">
+        <ul>
+            <li id="right" class="">
+                <ul>
+
+                    <li>
+                        <a href="https://github.com/alsarmad" target="_blank">
+                            <img src="./image/github.png" class="icon_header" alt="github">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" target="_blank">
+                            <img src="./image/removeBG.png" class="icon_header" alt="removeBG">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://t.me/tqw24h" target="_blank">
+                            <img src="./image/telegram.png" class="icon_header" alt="telegram">
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li id="left">
+                <img src="./image/logo.png" id="logo" alt="logo">
+            </li>
+        </ul>
+    </header>
+
+    <!-- ================ HEADER =============== -->
+
+
+
+    <!-- ================ BODY =============== -->
+
+
+    <div id="content">
+
+
+        <div id="loding">
+            <img src="./image/loding.svg" id="loding_svg">
+        </div>
+
+
+        <div id="body_input">
+
+            <h1 id="text_top">
+                استخراج بيانات المنتج من موقع علي إكسبريس
+            </h1>
+
+            <div id="input">
+                <p>
+                    قم بكتابة رابط المنتج او رقم المنتج
+                </p>
+
+                <p id="alert">
+                    تأكد من كتابة الرابط او رقم المنتج بشكل صحيح !!
+                </p>
+
+                <input type="text" name="link" id="input_link_id"
+                    placeholder="https://ar.aliexpress.com/item/32931282121.html or 32931282121">
+
+                <button id="input_bt">
+                    إستخراج
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="info_data">
+
+            <h3>
+                بيانات المنتج
+            </h3>
+
+            <table id="table_req">
+                <thead>
+                    <tr>
+                        <th>
+                            الفئة
+                        </th>
+
+                        <th>
+                            القيمة
+                        </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="text_table">
+                            عنوان المنتج
+                        </td>
+
+                        <td id="title_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            وصف المنتج
+                        </td>
+
+                        <td id="description_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            الكلمات الدلالية
+                        </td>
+
+                        <td id="keywords_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            فئة المنتج
+                        </td>
+
+                        <td id="categoryName_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            رابط الفئة
+                        </td>
+
+                        <td id="categoryUrl_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            رقم المنتج
+                        </td>
+
+                        <td id="productId_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            عدد المبيعات
+                        </td>
+
+                        <td id="tradeCount_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            إسم المتجر
+                        </td>
+
+                        <td id="storeInfo_name_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            معرف الشركة
+                        </td>
+
+                        <td id="storeInfo_companyId_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            رابط المتجر
+                        </td>
+
+                        <td id="storeInfo_storeURL_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            رقم المتجر
+                        </td>
+
+                        <td id="storeInfo_storeNumber_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            شعار المتجر
+                        </td>
+
+                        <td id="storeInfo_storeLogo_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            السعر
+                        </td>
+
+                        <td id="actCurrencyFormatPrice_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            اقل سعر للمنتج
+                        </td>
+
+                        <td id="minActivityAmount_m">
+                             
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_table">
+                            اعلى سعر للمنتج
+                        </td>
+
+                        <td id="maxActivityAmount_m">
+                             
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div id="images_aliExpress">
+
+            </div>
+
+        </div>
+
+
+
+        <p id="Copyright">
+            Copyright © 2023 alsarmad.
+        </p>
+    </div>
+
+    <!-- ================ BODY =============== -->
+
+
+
+    <!-- ================ FOOTER =============== -->
+
+    <div id="footer">
+
+        <p id="text_footer">
+            روابط مهمة
+        </p>
+
+        <div id="footer_links">
+            <a href="./index.html">
+                الرئيسية
+            </a>
+
+            <a href="#">
+                إزالة خلفية الصور
+            </a>
+
+            <a href="https://t.me/tqw24h" target="_blank">
+                قروب أذكار المسلم
+            </a>
+
+            <a href="https://altaqwaa.org" target="_blank">
+                تطبيق التقوى
+            </a>
+        </div>
+
+
+        <a href="https://www.alsarmad.org" target="_blank" id="alsarmad_footer">
+            برمجيات منظمة السرمد
+        </a>
+
+
+    </div>
+
+    <!-- ================ FOOTER =============== -->
+
+    <script type="module">
+
+        /*
+        
+        let removeBg = await fetch("http://localhost:4000/upload", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                filename: "rn0x.png",
+                bash64: base64Image
+            }),
+        });
+
+        console.log(await removeBg?.json());
+
+        
+        let aliexpress = await fetch("https://api.alsarmad.org/aliexpress", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                input: "32931282121",
+                language: "ar"
+            }),
+        });
+
+        console.log(await aliexpress?.json());
+
+        */
+
+    </script>
+
+    <script src="./js/index.js" type="module"></script>
+
+</body>
+
+</html>
