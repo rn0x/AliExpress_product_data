@@ -18,6 +18,11 @@ body {
     color: #1b1b1f;
     direction: rtl;
     font-family: "Al_Jazeera", "Amiri";
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 
@@ -112,6 +117,7 @@ body {
     backdrop-filter: blur(10px);
     margin-top: -70px;
 }
+
 #loding_svg {
     display: block;
     margin-left: auto;
@@ -213,7 +219,7 @@ body {
 
 
 #info_data {
-    display: none;
+    display: block;
 }
 
 #info_data h3 {
@@ -221,9 +227,10 @@ body {
     text-align: center;
     color: #a35948;
 }
+
 #table_req {
     display: table;
-    width: 90%;
+    max-width: 90%;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -246,6 +253,7 @@ body {
     color: #e7907c;
     border: 1px solid #a9a9a9;
     direction: ltr;
+    word-wrap: break-word;
 }
 
 #table_req th {
