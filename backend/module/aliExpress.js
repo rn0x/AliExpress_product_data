@@ -39,11 +39,12 @@ export default async function aliExpress(input, language) {
 
             let dom = new JSDOM(body, { runScripts: "dangerously" });
             let dataValue = dom.window?.runParams?.data;
+            let title = dataValue?.metaDataComponent?.title ? dataValue?.metaDataComponent?.title : dataValue?.extraComponent?.seoTitle;
 
-            if (dataValue) {
+            if (title) {
 
                 let Obj = {
-                    title: dataValue?.metaDataComponent?.title,
+                    title: dataValue?.metaDataComponent?.title ? dataValue?.metaDataComponent?.title : dataValue?.extraComponent?.seoTitle,
                     description: dataValue?.metaDataComponent?.description,
                     keywords: dataValue?.metaDataComponent?.keywords,
                     categoryUrl: dataValue?.categoryComponent?.categoryUrl,
@@ -73,6 +74,12 @@ export default async function aliExpress(input, language) {
 
             }
 
+            else if (dataValue?.redirectModule?.bigBossBanTip) {
+                return {
+                    error: dataValue?.redirectModule?.bigBossBanTip
+                }
+            }
+
             else {
                 return {
                     error: "لايوجد معلومات عن المنتج !!\n\nهل قمت بإدخال معرف المنتج او الرابط بشكل صحيح ؟"
@@ -93,7 +100,7 @@ export default async function aliExpress(input, language) {
 
     else {
         return {
-            error: "تأكد من كتابة الرابط او معرف المنتج"
+            error: "لايوجد معلومات عن المنتج !!\n\nهل قمت بإدخال معرف المنتج او الرابط بشكل صحيح ؟"
         }
     }
 
