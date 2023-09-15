@@ -48,9 +48,9 @@ input_bt.addEventListener("click", async e => {
         let maxActivityAmount_m = document.getElementById("maxActivityAmount_m");
         let images_aliExpress = document.getElementById("images_aliExpress");
 
-        let minPrice = json?.salePrice?.minActivityAmount?.formatedAmount ? json?.salePrice?.minActivityAmount?.formatedAmount  : json?.origPrice?.minAmount?.formatedAmount ? json?.origPrice?.minAmount?.formatedAmount : false;
-        let maxPrice = json?.salePrice?.maxActivityAmount?.formatedAmount ? json?.salePrice?.maxActivityAmount?.formatedAmount  : json?.origPrice?.maxAmount?.formatedAmount ? json?.origPrice?.maxAmount?.formatedAmount : false;
-        let actCurrencyFormatPrice = json?.salePrice?.actCurrencyFormatPrice ? json?.salePrice?.actCurrencyFormatPrice : (minPrice & maxPrice) ? `${minPrice} - ${maxPrice}` : false;
+        let minPrice = json?.salePrice?.minActivityAmount?.formatedAmount ? json?.salePrice?.minActivityAmount?.formatedAmount : json?.origPrice?.minAmount?.formatedAmount ? json?.origPrice?.minAmount?.formatedAmount : false;
+        let maxPrice = json?.salePrice?.maxActivityAmount?.formatedAmount ? json?.salePrice?.maxActivityAmount?.formatedAmount : json?.origPrice?.maxAmount?.formatedAmount ? json?.origPrice?.maxAmount?.formatedAmount : false;
+        let actCurrencyFormatPrice = json?.salePrice?.actCurrencyFormatPrice ? json?.salePrice?.actCurrencyFormatPrice : `${minPrice ? minPrice : ""} - ${maxPrice ? maxPrice : ""}`;
 
         loding.style.display = "none";
         body_input.style.display = "none";
@@ -113,10 +113,13 @@ input_bt.addEventListener("click", async e => {
 
 
 function StrSplit(text) {
-    let str = text?.split("| |   - AliExpres")?.join()
-    ?.split("- AliExpress")?.join("")
-    ?.split("AliExpress")?.join("")
-    ?.split("aliexpress")?.join("")
-    ?.split("aliExpress")?.join("")
+    let str = text?.split("| |   - AliExpress")?.join("")
+        ?.split("- AliExpress")?.join("")
+        ?.split("Aliexpress.com")?.join("")
+        ?.split("aliexpress.com")?.join("")
+        ?.split("AliExpress")?.join("")
+        ?.split("aliexpress")?.join("")
+        ?.split("aliExpress")?.join("")
+        ?.split("Aliexpress")?.join("")
     return str
 }
