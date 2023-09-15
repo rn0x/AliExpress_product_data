@@ -50,14 +50,14 @@ input_bt.addEventListener("click", async e => {
 
         let minPrice = json?.salePrice?.minActivityAmount?.formatedAmount ? json?.salePrice?.minActivityAmount?.formatedAmount  : json?.origPrice?.minAmount?.formatedAmount ? json?.origPrice?.minAmount?.formatedAmount : false;
         let maxPrice = json?.salePrice?.maxActivityAmount?.formatedAmount ? json?.salePrice?.maxActivityAmount?.formatedAmount  : json?.origPrice?.maxAmount?.formatedAmount ? json?.origPrice?.maxAmount?.formatedAmount : false;
-        let actCurrencyFormatPrice = json?.salePrice?.actCurrencyFormatPrice ? json?.salePrice?.actCurrencyFormatPrice : minPrice & maxPrice ? `${minPrice} - ${maxPrice}` : "لايوجد";
+        let actCurrencyFormatPrice = json?.salePrice?.actCurrencyFormatPrice ? json?.salePrice?.actCurrencyFormatPrice : (minPrice & maxPrice) ? `${minPrice} - ${maxPrice}` : false;
 
         loding.style.display = "none";
         body_input.style.display = "none";
         info_data.style.display = "block";
-        title_m.innerText = json?.title ? json?.title : "لايوجد";
-        description_m.innerText = json?.description ? json?.description : "لايوجد";
-        keywords_m.innerText = json?.keywords ? json?.keywords : "لايوجد";
+        title_m.innerText = json?.title ? StrSplit(json?.title) : "لايوجد";
+        description_m.innerText = json?.description ? StrSplit(json?.description) : "لايوجد";
+        keywords_m.innerText = json?.keywords ? StrSplit(json?.keywords) : "لايوجد";
         categoryName_m.innerText = json?.categoryName ? json?.categoryName : "لايوجد";
         categoryUrl_m.innerText = json?.categoryUrl ? `https:${json?.categoryUrl}` : "لايوجد";
         productId_m.innerText = json?.productId ? json?.productId : "لايوجد";
@@ -67,7 +67,7 @@ input_bt.addEventListener("click", async e => {
         storeInfo_storeURL_m.innerText = json?.storeInfo?.storeURL ? `https:${json?.storeInfo?.storeURL}` : "لايوجد";
         storeInfo_storeNumber_m.innerText = json?.storeInfo?.storeNumber ? json?.storeInfo?.storeNumber : "لايوجد";
         storeInfo_storeLogo_m.innerText = json?.storeInfo?.storeLogo ? json?.storeInfo?.storeLogo : "لايوجد";
-        actCurrencyFormatPrice_m.innerText = actCurrencyFormatPrice;
+        actCurrencyFormatPrice_m.innerText = actCurrencyFormatPrice ? actCurrencyFormatPrice : "لايوجد";
         minActivityAmount_m.innerText = minPrice ? minPrice : "لايوجد";
         maxActivityAmount_m.innerText = maxPrice ? maxPrice : "لايوجد";
 
@@ -110,3 +110,13 @@ input_bt.addEventListener("click", async e => {
         }
     }
 });
+
+
+function StrSplit(text) {
+    let str = text?.split("| |   - AliExpres")?.join()
+    ?.split("- AliExpress")?.join("")
+    ?.split("AliExpress")?.join("")
+    ?.split("aliexpress")?.join("")
+    ?.split("aliExpress")?.join("")
+    return str
+}
