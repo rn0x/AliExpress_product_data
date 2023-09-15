@@ -48,6 +48,10 @@ input_bt.addEventListener("click", async e => {
         let maxActivityAmount_m = document.getElementById("maxActivityAmount_m");
         let images_aliExpress = document.getElementById("images_aliExpress");
 
+        let minPrice = json?.salePrice?.minActivityAmount?.formatedAmount ? json?.salePrice?.minActivityAmount?.formatedAmount  : json?.origPrice?.minAmount?.formatedAmount ? json?.origPrice?.minAmount?.formatedAmount : false;
+        let maxPrice = json?.salePrice?.maxActivityAmount?.formatedAmount ? json?.salePrice?.maxActivityAmount?.formatedAmount  : json?.origPrice?.maxAmount?.formatedAmount ? json?.origPrice?.maxAmount?.formatedAmount : false;
+        let actCurrencyFormatPrice = json?.salePrice?.actCurrencyFormatPrice ? json?.salePrice?.actCurrencyFormatPrice : minPrice & maxPrice ? `${minPrice} - ${maxPrice}` : "لايوجد";
+
         loding.style.display = "none";
         body_input.style.display = "none";
         info_data.style.display = "block";
@@ -63,9 +67,9 @@ input_bt.addEventListener("click", async e => {
         storeInfo_storeURL_m.innerText = json?.storeInfo?.storeURL ? `https:${json?.storeInfo?.storeURL}` : "لايوجد";
         storeInfo_storeNumber_m.innerText = json?.storeInfo?.storeNumber ? json?.storeInfo?.storeNumber : "لايوجد";
         storeInfo_storeLogo_m.innerText = json?.storeInfo?.storeLogo ? json?.storeInfo?.storeLogo : "لايوجد";
-        actCurrencyFormatPrice_m.innerText = json?.salePrice?.actCurrencyFormatPrice ? json?.salePrice?.actCurrencyFormatPrice : "لايوجد";
-        minActivityAmount_m.innerText = json?.salePrice?.minActivityAmount?.formatedAmount ? json?.salePrice?.minActivityAmount?.formatedAmount : "لايوجد";
-        maxActivityAmount_m.innerText = json?.salePrice?.maxActivityAmount?.formatedAmount ? json?.salePrice?.maxActivityAmount?.formatedAmount : "لايوجد";
+        actCurrencyFormatPrice_m.innerText = actCurrencyFormatPrice;
+        minActivityAmount_m.innerText = minPrice ? minPrice : "لايوجد";
+        maxActivityAmount_m.innerText = maxPrice ? maxPrice : "لايوجد";
 
         for (let item of json?.images?.imagePathList) {
 
@@ -74,6 +78,8 @@ input_bt.addEventListener("click", async e => {
             image.className = "images_h";
             image.src = item
         }
+
+        console.log(json);
     }
 
     else {
