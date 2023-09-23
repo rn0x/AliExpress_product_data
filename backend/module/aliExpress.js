@@ -21,15 +21,14 @@ export default async function aliExpress(input, language) {
         let options = {};
         options.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', // تحديد رأس User-Agent
-            'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3', // تحديد رأس Accept-Language
+            'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
             'Cookie': cookieJar?.getCookieStringSync(url)
-            // يمكنك تحديد المزيد من الرؤوس حسب الحاجة
         }
         options.follow = 10;
         let response = await fetch(url, options);
         let setCookieHeaders = response?.headers?.raw()?.['set-cookie'];
         setCookieHeaders?.forEach(setCookieHeader => {
-          cookieJar?.setCookieSync(setCookieHeader, url);
+            cookieJar?.setCookieSync(setCookieHeader, url);
         });
         let body = await response?.text();
 
@@ -100,7 +99,7 @@ export default async function aliExpress(input, language) {
 
     else {
         return {
-            error: "لايوجد معلومات عن المنتج !!\n\nهل قمت بإدخال معرف المنتج او الرابط بشكل صحيح ؟"
+            error: "لقد قمت بإدخال معرف المنتج او الرابط بشكل غير صحيح صحيح !!"
         }
     }
 
